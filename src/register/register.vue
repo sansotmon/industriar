@@ -1,8 +1,5 @@
 <template lang="pug">
-
-    section.section
       h1 REGISTER
-      nav.nav.has-shadow
         .container
           input.input(v-model="name" type="text" placeholder="Name")
           br
@@ -36,7 +33,10 @@ export default {
   },
   methods: {
     goToRegister () {
-      if (this.username == '') return
+      if (this.username == '' || this.password == '' || this.name == ''){
+        this.response = 'Debes llenar todos los campos' 
+        return
+      }
       userService.register('register',this.name, this.username,this.password)
       .then (res => {
         this.response = JSON.stringify(res)

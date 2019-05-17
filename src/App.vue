@@ -1,6 +1,8 @@
 <template lang="pug">
   #app
 
+    .container.logo
+      img(src="/src/assets/logo.png")
     section.section
       h1 LOGIN
       nav.nav.has-shadow
@@ -9,9 +11,10 @@
           br
           input.input(v-model="password" type="text" placeholder="Password")
           br
-          a.button(@click="doLogin") Log in
+          a.button.btn-primary(@click="doLogin") Log in
           br
           p {{ printResponse }}
+          br
           register
 </template>
 
@@ -35,6 +38,10 @@ export default {
   },
   methods: {
     doLogin () {
+      if (this.username == '' || this.password == ''){
+        this.response = 'Debes llenar todos los campos' 
+        return
+      }
       userService.login('login',this.username,this.password)
       .then (res => {
         this.response = JSON.stringify(res)
