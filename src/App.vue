@@ -44,7 +44,11 @@ export default {
       }
       userService.login('login',this.username,this.password)
       .then (res => {
-        this.response = JSON.stringify(res)
+        if(res.error){
+          this.response = JSON.stringify(res.error)
+        }else{
+          this.response = JSON.stringify(res.message)
+        }
       })
     }
   }
