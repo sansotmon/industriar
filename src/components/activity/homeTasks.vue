@@ -150,14 +150,8 @@ export default {
 		let grid = document.createElement('script');    
 		grid.setAttribute('src',"../../src/js/grid.js");
 		document.head.appendChild(grid);
-
-		let products = document.createElement('products');    
-		products.setAttribute('src',"../../src/js/products.js");
-		document.body.appendChild(products);
-
 	}
 }
-
 </script>
 
 

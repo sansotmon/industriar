@@ -20,7 +20,7 @@
 		        </div>
 			</div>
 			<div class="col desktop">
-				<a href="#">
+				<a>
 					<figure>
 						<img src="/src/images/icons/svgs/solid/home.svg" alt="home">
 					</figure>
@@ -28,12 +28,15 @@
 				</a>
 			</div>
 			<div class="col desktop">
-				<a href="usuarios.html">
-					<figure>
-						<img src="/src/images/icons/svgs/solid/users.svg" alt="users">
-					</figure>
-					<p>Consultar usuarios</p>
-				</a>
+				<router-link :to="{ name: 'getusers', params: { userId: 123 }}">
+					<a>
+						<figure>
+							<img src="/src/images/icons/svgs/solid/users.svg" alt="users">
+						</figure>
+						<p>Consultar usuarios</p>
+					</a>
+				</router-link>
+				
 			</div>
 			<div class="col desktop">
 				<a href="#">

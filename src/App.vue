@@ -13,44 +13,16 @@
 import userService from './services/login'
 import IaFooter from './components/layout/footer.vue'
 import IaLogin from './components/activity/login.vue'
+import IaGetUsers from './components/activity/getUsers.vue'
 
 export default {
   name: 'app',
-  components: {IaFooter,IaLogin},
+  components: {IaFooter,IaLogin,IaGetUsers},
   data () {
-    return {
-      username: '',
-      password: '',
-      response: '',
-      url:'src/images/logo.png'
-    }
+    return {}
   },
-
-  computed: {
-    printResponse () {
-      return this.response
-    },
-    hrefLogo() {
-      return this.url
-    }
-  },
-  methods: {
-    doLogin () {
-      if (this.username == '' || this.password == ''){
-        this.response = 'Debes llenar todos los campos' 
-        this.$router.go('register');
-        return
-      }
-      userService.login('login',this.username,this.password)
-      .then (res => {
-        if(res.error){
-          this.response = JSON.stringify(res.error)
-        }else{
-          this.response = JSON.stringify(res.message)
-        }
-      })
-    }
-  }
+  computed: {},
+  methods: {}
 }
 </script>
 
