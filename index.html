@@ -24,5 +24,16 @@
   <body>
     <div id="app"></div>
     <script src="/dist/build.js"></script>
+    <script type="text/x-kendo-template" id="template">
+		<div id="details-container">
+			<h2>#= Nombres # - #= AsignadoA #</h2>
+			<em>Estado: #= Estado #</em>
+			<dl>
+				<dt><b>Tipo:</b> #= Tipo #</dt><br>
+				<dt><b>Fecha de solicitud:</b> #= kendo.toString(FechaSolicitud, "dd/MM/yyyy") #</dt>
+			</dl>		
+		</div>
+	</script>
+	<script src="src/js/products.js"></script>
   </body>
 </html>

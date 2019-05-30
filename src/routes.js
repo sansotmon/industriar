@@ -1,7 +1,9 @@
 import Vue from 'vue';
-import RegisterPage from './register/register.vue'
+import IaHomeTasks from './components/activity/homeTasks.vue'
+import IaLogin from './components/activity/login.vue'
 
 const routes =[
-    { path: '/register', component: RegisterPage , name: 'register'}
+    { path: '/home', component: IaHomeTasks , name: 'home'},
+    { path: '/', component: IaLogin , name: 'login'}
 ]
 export default routes
