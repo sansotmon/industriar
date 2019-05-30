@@ -1,57 +1,28 @@
-<template lang="pug">
-  #app
-
-    .container.logo
-      img(src="/src/assets/logo.png")
-    section.section
-      h1 LOGIN
-      nav.nav.has-shadow
-        .container
-          input.input(v-model="username" type="text" placeholder="Username")
-          br
-          input.input(v-model="password" type="text" placeholder="Password")
-          br
-          a.button.btn-primary(@click="doLogin") Log in
-          br
-          p {{ printResponse }}
-          br
-          register
+<template >
+  <div class="container customfont" id="app">
+      <div>
+        <router-view></router-view>
+      </div><br><br><br>
+      <IaFooter>
+      </IaFooter>
+    </div>
+  </div>
 </template>
 
 <script>
 import userService from './services/login'
+import IaFooter from './components/layout/footer.vue'
+import IaLogin from './components/activity/login.vue'
+import IaGetUsers from './components/activity/getUsers.vue'
 
 export default {
   name: 'app',
+  components: {IaFooter,IaLogin,IaGetUsers},
   data () {
-    return {
-      username: '',
-      password: '',
-      response: ''
-    }
+    return {}
   },
-
-  computed: {
-    printResponse () {
-      return this.response
-    }
-  },
-  methods: {
-    doLogin () {
-      if (this.username == '' || this.password == ''){
-        this.response = 'Debes llenar todos los campos' 
-        return
-      }
-      userService.login('login',this.username,this.password)
-      .then (res => {
-        if(res.error){
-          this.response = JSON.stringify(res.error)
-        }else{
-          this.response = JSON.stringify(res.message)
-        }
-      })
-    }
-  }
+  computed: {},
+  methods: {}
 }
 </script>
 
