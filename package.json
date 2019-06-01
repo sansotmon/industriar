@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "bulma": "^0.7.4",
+    "cors": "^2.8.5",
     "trae": "^1.4.2",
     "vue": "^2.5.11",
     "vue-router": "^3.0.6"

@@ -55,15 +55,6 @@ var wnd, detailsTemplate;
 					width: "180px"							
 				}
 			]					
-		});								
-		
-		function onClick(e) {
-			location.href = "resumen.html";
-		}				
-
-		$("#iconButton").kendoButton({
-			imageUrl: "/src/images/icons/resumen.png",
-			click: onClick
 		});
 
 		 wnd = $("#details")

@@ -20,12 +20,14 @@
 		        </div>
 			</div>
 			<div class="col desktop">
-				<a>
-					<figure>
-						<img src="/src/images/icons/svgs/solid/home.svg" alt="home">
-					</figure>
-					<p>Inicio</p>
-				</a>
+				<router-link :to="{ name: 'home', params: { userId: 123 }}">
+					<a>
+						<figure>
+							<img src="/src/images/icons/svgs/solid/home.svg" alt="home">
+						</figure>
+						<p>Inicio</p>
+					</a>
+				</router-link>
 			</div>
 			<div class="col desktop">
 				<router-link :to="{ name: 'getusers', params: { userId: 123 }}">
@@ -36,31 +38,36 @@
 						<p>Consultar usuarios</p>
 					</a>
 				</router-link>
-				
 			</div>
 			<div class="col desktop">
-				<a href="#">
-					<figure>
-						<img src="/src/images/icons/svgs/solid/user-plus.svg" alt="create user">
-					</figure>
-					<p>Crear usuario</p>
-				</a>
+				<router-link :to="{ name: 'createuser', params: { userId: 123 }}">
+					<a>
+						<figure>
+							<img src="/src/images/icons/svgs/solid/user-plus.svg" alt="create user">
+						</figure>
+						<p>Crear usuario</p>
+					</a>
+				</router-link>
 			</div>
 			<div class="col desktop">
-				<a href="#">
-					<figure>
-						<img src="/src/images/icons/svgs/solid/user-times.svg" alt="delete user">
-					</figure>
-					<p>Eliminar Usuario</p>
-				</a>
+				<router-link :to="{ name: 'deleteuser', params: { userId: 123 }}">
+					<a>
+						<figure>
+							<img src="/src/images/icons/svgs/solid/user-times.svg" alt="delete user">
+						</figure>
+						<p>Eliminar Usuario</p>
+					</a>
+				</router-link>
 			</div>
 			<div class="col desktop">
-				<a href="#">
-					<figure>
-						<img src="/src/images/icons/svgs/solid/sign-out-alt.svg" alt="logout">
-					</figure>
-					<p>Cerrar sesi&oacute;n</p>
-				</a>
+				<router-link :to="{ name: 'login', params: { userId: 123 }}">
+					<a>
+						<figure>
+							<img src="/src/images/icons/svgs/solid/sign-out-alt.svg" alt="logout">
+						</figure>
+						<p>Cerrar sesi&oacute;n</p>
+					</a>
+				</router-link>
 			</div>
 		</div>
 		<div class="line-separator"></div>

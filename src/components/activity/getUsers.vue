@@ -9,7 +9,6 @@
             <div id="example">
                 <div id="grid-users"></div>
             </div>
-            
         </section>
     </div>
 </template>
@@ -27,7 +26,7 @@ export default {
     methods: {},
     mounted(){
         let grid = document.createElement('script');    
-        grid.setAttribute('src',"../../src/js/gridUsers.js");
+        grid.setAttribute('src',"../../src/js/getUser.js");
         document.head.appendChild(grid);
     }
 }
