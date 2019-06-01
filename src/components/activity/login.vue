@@ -20,14 +20,16 @@
         </div>
       <div class="row">
         <div class="col-12" align="right" style="margin-bottom: 5%;">
-          <a href="rememberPassword.html">Remember password</a>
+          <router-link :to="{ name: 'getpassword', params: { userId: 123 }}">
+            <a>Remember password</a>
+          </router-link>  
         </div>
         <div>
           <p>{{ printResponse }}</p>
-        </div><br>
+        </div>
       </div>
-        <div align="center">
-          <input type="button" class="btn btn-primary" role="button" @click="doLogin"  name="Log in" value="Log in">
+        <div align="center" style="margin-top: 5%">
+          <input type="button" class="btn btn-primary" role="button" @click='doLogin'  name="Log in" value="Log in">
             <router-link :to="{ name: 'login', params: { userId: 123 }}"></router-link>
           </input>
         </div>
@@ -37,7 +39,7 @@
 </template>
 
 <script>
-import userService from '../../services/login'
+import userService from '../../services/querys'
 
 export default {
   name: 'app',
@@ -61,8 +63,7 @@ export default {
   methods: {
     doLogin () {
       if (this.username == '' || this.password == ''){
-        this.response = 'Debes llenar todos los campos' 
-        this.$router.push('home');
+        this.response = 'Debes llenar todos los campos'    
         return
       }
       userService.login('login',this.username,this.password)
@@ -71,6 +72,7 @@ export default {
           this.response = JSON.stringify(res.error)
         }else{
           this.response = JSON.stringify(res.message)
+          this.$router.push('home');
         }
       })
     }

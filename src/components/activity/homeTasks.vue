@@ -3,17 +3,52 @@
 		<IaHeader/>
 		<section>
 			<div>
-			<div class="description-page">		
-				<img src="src/images/icons/svgs/regular/check-square.svg">
-				<span>Task list</span>
-			</div>
+				<div class="description-page">		
+					<img src="src/images/icons/svgs/regular/check-square.svg">
+					<span>Task list</span>
+				</div>
 			</div>
 
-			<div class="resumenButton">
-				<span style="margin-left: 45%;">
-					<button type="button" id="iconButton" formaction="/resumen.html">Task summary</button>
-				</span>
+			<div class="row justify-content-md-center" align="center">
+				<div align="center" style="margin-right: 20%">
+					<span>
+						<router-link :to="{ name: 'createtask', params: { userId: 123 }}">
+							<button type="button" id="iconButton" class="k-button">Create Task</button>
+						</router-link>
+					</span>
+				</div>
+
+				<div class="resumenButton" align="center">
+					<span >
+						<router-link :to="{ name: 'tasksummary', params: { userId: 123 }}">
+							<button type="button" id="iconButton" class="k-button">Task summary</button>
+						</router-link>
+					</span>
+				</div>
 			</div>
+
+			
+			<div align="center" style="margin-left: 20%; margin-right: 20%">
+				<div>
+					<input type="number" name="idTask" v-model="idTask" placeholder="Id task">
+				</div><br>
+				<div id='example' role='application' style="width: 50%">
+                 <div id='tshirt-view' class='demo-section k-content'>
+                    <select id='state' v-model='statusTask' style='width: 100%;'>
+                        <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Canceled">Canceled</option>
+                        <option value="Created">Created</option>
+                    </select>
+                 </div>         
+				</div><br>
+				<div>
+					<button type="button" id="iconButton" class="k-button" @click='DoChangeTask'>Do change task</button>
+				</div>
+			</div>
+			<div align="center">
+		        <p>{{ printResponse }}</p>
+		    </div>
 
 			<div class="table">
 			</div>
@@ -137,18 +172,43 @@
 
 <script>
 import IaHeader from '../../components/layout/header.vue'
+import userService from '../../services/querys'
 
 export default {
+
   name: 'app',
   components: {IaHeader},
   data () {
-  	return{}
+  	return{
+  	  idTask: '',
+      statusTask: '',
+      response: ''
+  	}
   },
-  computed: {},
-	methods: {},
+  computed: {
+  	printResponse () {
+      return this.response
+    }
+  },
+	methods: {
+		DoChangeTask () {
+	      if (this.idTask == '' || this.statusTask == ''){
+	        this.response = 'Ingrese el id de la tarea y seleccione el estado..' 
+	        return
+	      }
+	      userService.updateTask('updateTask',this.idTask, this.statusTask)
+	      .then (res => {
+	        if(res.error){
+	          this.response = JSON.stringify(res.error)
+	        }else{
+	          this.response = JSON.stringify(res.message)
+	        }
+	      })
+	    }
+	},
 	mounted(){
 		let grid = document.createElement('script');    
-		grid.setAttribute('src',"../../src/js/grid.js");
+		grid.setAttribute('src',"../../src/js/getTasks.js");
 		document.head.appendChild(grid);
 	}
 }
